@@ -91,7 +91,7 @@ if ($havesbinfo) {
 
 	print "Successfully connected to Sourcebans database.  Retrieving banned Steam IDs now...\n";
 
-	my $result = &doQuery($sb_dbconn, "SELECT `authid` FROM ".$sb_prefix."bans WHERE `length` = 0 AND `RemovedBy` IS NULL");
+	my $result = &doQuery($sb_dbconn, "SELECT `steam` FROM ".$sb_prefix."bans WHERE `length` = 0 AND `unban_admin_id` IS NULL");
 	while ( my($steamid) = $result->fetchrow_array) {
 		push(@steamids, $steamid);
 	}
